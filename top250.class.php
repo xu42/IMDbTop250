@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+
 	/**
 	* 获取IMDB top 250列表和下载信息
 	* 数据来源于下列两个站点
@@ -7,12 +7,12 @@ error_reporting(0);
 	* 2. http://www.bttiantang.com/
 	* @author 许杨淼淼 http://blog.xuyangjie.cn/
 	* @link https://github.com/xu42/IMDbTop250
-	* 2015-05-16
+	* 2015-05-19
 	*/
 	class top250 {
 		
 		/**
-		 * 抓取网页函数
+		 * 抓取网页
 		 * @param  string $url 待抓取网页地址
 		 * @return string      待抓取网页源代码
 		 */
@@ -147,6 +147,17 @@ error_reporting(0);
 			return array_filter($imdbUrl);
 		}
 
+		/**
+		 * 翻译电影名
+		 * @param  string $movieName 原电影名
+		 * @return string            翻译后的电影名
+		 */
+		public function translation($movieName){
+			$api = 'http://translate.googleapis.com/translate_a/single?client=t&sl=en&tl=zh-CN&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&dt=at&q='.urlencode($movieName);
+			$rs = $this->getWebPage($api);
+			preg_match('/\[\[\["(.*?)"/', $rs, $matches);
+			return $matches[1];
+		}
 
 		/**
 		 * 获取一部电影在IMDB的编号(tt0000000)对应bttiantang的subject编号id

@@ -1,12 +1,11 @@
 <?php
 
 	include 'top250.class.php';
-
 	/**
 	* 更新IMDB TOP 250 数据库
 	* @author 许杨淼淼 http://blog.xuyangjie.cn/
 	* @link https://github.com/xu42/IMDbTop250
-	* 2015-05-16
+	* 2015-05-19
 	*/
 	class updateDB{
 
@@ -20,7 +19,7 @@
 		function __construct(){
 
 			$this->top250 = new top250();
-			$this->conn = mysqli_connect('localhost', 'top250', 'QeW4z6jeY4pzZPub','top250');
+			$this->conn = mysqli_connect('localhost', 'top250', '','top250');
 			mysqli_set_charset($this->conn, "utf8");
 		}
 
@@ -43,7 +42,8 @@
 		 	mysqli_query($this->conn, "TRUNCATE TABLE `top250`"); // 清空表信息
 		 	for ($i=1; $i <= 250; $i++) { 
 		 		$temp = mysqli_real_escape_string($this->conn, $name[$i]);
-		 		$sql = "INSERT INTO `top250`(`name`, `date`, `rating`, `titleid`, `img`, `hdimg`, `imdburl`) VALUES ('$temp', '$date[$i]', '$rating[$i]', '$titleid[$i]', '$img[$i]', '$hdimg[$i]', '$imdburl[$i]') ";
+				$tname = $this->top250->translation($temp);
+		 		$sql = "INSERT INTO `top250`(`name`, `tname`, `date`, `rating`, `titleid`, `img`, `hdimg`, `imdburl`) VALUES ('$temp', '$tname', '$date[$i]', '$rating[$i]', '$titleid[$i]', '$img[$i]', '$hdimg[$i]', '$imdburl[$i]') ";
 		 		mysqli_query($this->conn, $sql);
 		 	}
 
