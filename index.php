@@ -17,7 +17,10 @@
       <li class="disabled"><a class="navbar-brand" href="#">IMDb TOP 250</a></li>
       <li><p class="navbar-text">BT种子下载</p></li>
       <li><a href="#">关于</a></li>
-      <li style="margin-top:16px;"><iframe width="" height="20px" frameborder="0" scrolling="no" src="http://widget.weibo.com/relationship/followbutton.php?language=zh_cn&width=110&height=100&uid=2139086105&style=3"></iframe></li>
+      <li style="margin-top:16px; margin-left:10px;"><a class="github-button" href="https://github.com/xu42" data-style="mega" data-count-href="/xu42/followers" data-count-api="/users/xu42#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @xu42 on GitHub">Follow @xu42</a></li>
+      <li style="margin-top:16px; margin-left:10px;"><a class="github-button" href="https://github.com/xu42/IMDbTop250/issues" data-icon="octicon-issue-opened" data-style="mega" data-count-api="/repos/xu42/IMDbTop250#open_issues_count" data-count-aria-label="# issues on GitHub" aria-label="Issue xu42/IMDbTop250 on GitHub">Issue</a></li>
+      <li style="margin-top:16px; margin-left:10px;"><a class="github-button" href="https://github.com/xu42/IMDbTop250/archive/master.zip" data-icon="octicon-cloud-download" data-style="mega" aria-label="Download xu42/IMDbTop250 on GitHub">Download</a></li>
+      <li style="margin-top:16px; margin-left:10px;"><iframe width="" height="20px" frameborder="0" scrolling="no" src="http://widget.weibo.com/relationship/followbutton.php?language=zh_cn&width=110&height=100&uid=2139086105&style=3"></iframe></li>
     </ol>
   </div>
 </nav>
@@ -75,8 +78,13 @@
   </div><!-- Modal end -->
 
 </div> <!-- end class container -->
+<script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
 <script src="http://libs.useso.com/js/jquery/1.10.2/jquery.min.js"></script>
 <script src="top250.js"></script>
 <script src="http://libs.useso.com/js/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<div style="display:none;" >
+	<script src="http://s95.cnzz.com/stat.php?id=1255134694&web_id=1255134694"></script>
+</div>	
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","qzone","tsina","bdysc","weixin","renren","tqq","kaixin001","tieba","douban","sqq","ibaidu","fx","youdao","sdo","qingbiji","people","ty","fbook","twi"],"bdPic":"","bdStyle":"1","bdSize":"16"},"slide":{"type":"slide","bdImg":"0","bdPos":"left","bdTop":"100.5"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 </body>
 </html>
