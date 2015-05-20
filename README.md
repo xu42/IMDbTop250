@@ -15,5 +15,5 @@
 
 ## 其它
 - Github [https://github.com/xu42/IMDbTop250](https://github.com/xu42/IMDbTop250)
-- demo [http://top250.ml/](https://github.com/xu42/IMDbTop250)
+- demo [http://top250.ml/](http://top250.ml/)
 ![](http://ww2.sinaimg.cn/mw690/7f7fdd19jw1esagsjgz2qj211y0lc42o.jpg)
