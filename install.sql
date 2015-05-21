@@ -11,6 +11,21 @@ CREATE TABLE IF NOT EXISTS `top250` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE IF NOT EXISTS `top250_ext` (
+  `id` int(8) unsigned NOT NULL AUTO_INCREMENT,
+  `titleid` char(9) NOT NULL,
+  `tname` varchar(255) DEFAULT NULL,
+  `douban` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `top250_movieposterdb` (
+  `id` int(8) unsigned NOT NULL AUTO_INCREMENT,
+  `titleid` char(9) NOT NULL,
+  `poster` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 CREATE TABLE IF NOT EXISTS `btdown` (
   `id` int(8) unsigned NOT NULL AUTO_INCREMENT,
   `titleid` char(9) NOT NULL,

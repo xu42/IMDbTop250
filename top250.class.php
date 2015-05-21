@@ -7,7 +7,7 @@
 	* 2. http://www.bttiantang.com/
 	* @author 许杨淼淼 http://blog.xuyangjie.cn/
 	* @link https://github.com/xu42/IMDbTop250
-	* 2015-05-19
+	* 2015-05-20
 	*/
 	class top250 {
 		
@@ -212,6 +212,35 @@
 			preg_match_all('#uhash=\w{24}"\stitle="(.*?)BT种子下载#', $pageDownList, $temp_name);
 			$uhashName = $temp_name[1];
 			return $uhashName;
+		}
+
+
+		/**
+		 * 根据某一电影imdb编号获取在豆瓣影评页面地址和对应的电影名字中文翻译
+		 * @param  string $imdbNum 电影imdb编号
+		 * @return array           该电影在豆瓣影评的网页地址和对应的电影名字中文翻译
+		 */
+		public function getDoubanMovie($imdbNum){
+			$url = 'http://movie.douban.com/subject_search?search_text=' . $imdbNum;
+			$webPage = $this->getWebPage($url);
+			preg_match_all('#http://movie\.douban\.com/subject/(\d{5,9})/#', $webPage, $reviews);
+			preg_match_all('#alt="(.*?)"#', $webPage, $translation);
+			$douban = array();
+			$douban[0] = $translation[1][0];
+			$douban[1] = $reviews[0][0];
+			return $douban;
+		}
+
+
+		/**
+		 * 根据某一电影imdb编号获取在movieposterdb的单张海报地址
+		 * @param string $imdbNum 电影imdb编号
+		 */
+		public function getPoster($imdbNum){
+			$url = 'http://www.movieposterdb.com/search/?query=' . $imdbNum;
+			$webPage = $this->getWebPage($url);
+			preg_match_all('#src="(http://www\.movieposterdb\.com/posters/\d{2}_\d{2}/\d{4}/\d+/)(m)(.*?)"#', $webPage, $poster);
+			return $poster[1][0] . 'l' . $poster[3][0];
 		}
 
 	}

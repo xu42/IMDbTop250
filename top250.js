@@ -2,7 +2,7 @@ $(document).ready(function() {
 	$("button").click(function() {
 		var id = $(this).attr("id");
 		var mvname = $(this).attr("name");
-		var api = 'http://top250.ml/top250api.php?id=' + id;
+		var api = 'http://top250.ml/top250api.php?down=' + id;
 		$.getJSON(api)
 			.done(function (json) {
 				$("#myModalLabel").text(mvname);
@@ -23,4 +23,29 @@ $(document).ready(function() {
 			$('#myModal').modal('hide');
 		});
 	});
+
+	$(".top250name").mouseenter(function(event) {
+		var x,y; 
+		x = event.pageX;
+		y = event.pageY;
+		var id = $(this).attr('id');
+		var api = 'http://top250.ml/top250api.php?id=' + id;
+		$.getJSON(api)
+			.done(function (json) {
+				$.each(json, function(index, val) {
+					$("#hdimg").attr('src', val.hdimg);
+				});
+			});
+		$("#hdimg").css({
+        	position: "absolute",
+        	width: "200px",
+        	left: x + 50 + "px",
+        	top: y + "px"
+        }).fadeIn('slow');
+	});
+
+	$(".top250name").mouseleave(function() {
+		$("#hdimg").css('display', 'none');
+	});
+
 });

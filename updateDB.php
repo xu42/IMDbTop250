@@ -19,7 +19,7 @@
 		function __construct(){
 
 			$this->top250 = new top250();
-			$this->conn = mysqli_connect('localhost', 'top250', '','top250');
+			$this->conn = mysqli_connect('localhost', 'top250', 'CdU7pG7cMUyPT2aQ','top250');
 			mysqli_set_charset($this->conn, "utf8");
 		}
 
@@ -46,6 +46,53 @@
 		 		$sql = "INSERT INTO `top250`(`name`, `tname`, `date`, `rating`, `titleid`, `img`, `hdimg`, `imdburl`) VALUES ('$temp', '$tname', '$date[$i]', '$rating[$i]', '$titleid[$i]', '$img[$i]', '$hdimg[$i]', '$imdburl[$i]') ";
 		 		mysqli_query($this->conn, $sql);
 		 	}
+
+			$insertid = mysqli_insert_id($this->conn);
+			mysqli_close($this->conn);
+			return $insertid;
+		}
+
+
+		/**
+		 * 更新 top250_ext 表
+		 * @return int 插入行数
+		 */
+		public function updateTop250Ext(){
+
+			$sql = "SELECT titleid FROM top250";
+			$rs = mysqli_query($this->conn, $sql);
+			$rs = mysqli_fetch_all($rs, MYSQLI_NUM);
+
+			mysqli_query($this->conn, "TRUNCATE TABLE `top250_ext`"); // 清空表信息
+			for ($i=0; $i < count($rs); $i++) { 
+				$imdb = $rs[$i][0];
+				$doubanMovie = $this->top250->getDoubanMovie($imdb);
+				$sql = "INSERT INTO `top250_ext`(`titleid`, `tname`, `douban`) VALUES ('$imdb', '$doubanMovie[0]', '$doubanMovie[1]')";
+				mysqli_query($this->conn, $sql);
+			}
+
+			$insertid = mysqli_insert_id($this->conn);
+			mysqli_close($this->conn);
+			return $insertid;
+		}
+		
+		/**
+		 * 更新 top250_movieposterdb 表
+		 * @return int 插入行数
+		 */
+		public function updateTop250Movieposterdb(){
+
+			$sql = "SELECT titleid FROM top250";
+			$rs = mysqli_query($this->conn, $sql);
+			$rs = mysqli_fetch_all($rs, MYSQLI_NUM);
+
+			mysqli_query($this->conn, "TRUNCATE TABLE `top250_movieposterdb`"); // 清空表信息
+			for ($i=0; $i < count($rs); $i++) { 
+				$imdb = $rs[$i][0];
+				$poster = $this->top250->getPoster($imdb);
+				$sql = "INSERT INTO `top250_movieposterdb`(`titleid`, `poster`) VALUES ('$imdb', '$poster')";
+				mysqli_query($this->conn, $sql);
+			}
 
 			$insertid = mysqli_insert_id($this->conn);
 			mysqli_close($this->conn);
@@ -97,6 +144,12 @@
 	} elseif (@$_GET['action'] == 'updateTop250') {
 		$insertid = $updateDB->updateTop250();
 		exit('updateTop250 '.$insertid);
+	} elseif (@$_GET['action'] == 'updateTop250Ext') {
+		$insertid = $updateDB->updateTop250Ext();
+		exit('updateTop250Ext '.$insertid);
+	} elseif (@$_GET['action'] == 'updateTop250Movieposterdb') {
+		$insertid = $updateDB->updateTop250Movieposterdb();
+		exit('updateTop250Movieposterdb '.$insertid);
 	} elseif (@$_GET['action'] == 'updateBtDown') {
 		$insertid = $updateDB->updateBtDown();
 		exit('updateBtDown '.$insertid);
