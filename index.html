@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ImdbTop250</title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <ol class="nav navbar-nav">
+            <li class="navbar-brand">IMDb TOP 250</li>
+            <li><a href="https://github.com/xu42/IMDbTop250">GitHub</a></li>
+        </ol>
+        <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+                <input type="text" v-model="wd" class="form-control" placeholder="Search">
+            </div>
+        </form>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="alert {{ alert }}" role="alert">
+        <p>{{ available }}</p>
+
+        <p>声明：本站数据来源于互联网，本站并未存储任何视频等资源。如有侵犯您的正当权益，请与我们取得联系。</p>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>电影</th>
+            <th>时间</th>
+            <th>评分</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="item in imdbListt">
+            <td>{{ item.id }}</td>
+            <td @click.prevent.stop="modal(item)">{{ item.name }} <br> {{ item.tname }}</td>
+            <td>{{ item.date }}</td>
+            <td>{{ item.rating }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <!-- Modal begin -->
+    <div class="modal fade" id="modal-down" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modal-down">点击下方链接下载: {{ itemTname }} / {{ itemName }}</h4>
+                </div>
+                <div class="modal-body">
+                    <div v-for="torrent in torrentLiteList">
+                        <form action="http://www.bttiantang.com/download.php" method="post">
+                            <input type="hidden" value="download" name="action">
+                            <input type="hidden" :value="torrentBtid" name="id">
+                            <input type="hidden" :value="torrent.uhash" name="uhash">
+                            <input type="hidden" value="64" name="imageField.x">
+                            <input type="hidden" value="32" name="imageField.y">
+                            <button type="submit" class="btn btn-link">{{ torrent.name }}</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal end -->
+
+    <script src="//cdn.bootcss.com/vue/1.0.26/vue.min.js"></script>
+    <script src="//cdn.bootcss.com/vue-resource/0.9.3/vue-resource.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
