@@ -19,10 +19,17 @@ git pull
 ```
 
 ## 其它
-- Github [https://github.com/xu42/IMDbTop250](https://github.com/xu42/IMDbTop250)
+- GitHub: [https://github.com/xu42/IMDbTop250](https://github.com/xu42/IMDbTop250)
+- Demo: [https://xu42.github.io/IMDbTop250/](https://xu42.github.io/IMDbTop250/)
 
-![](IMDbTop250-1.png)
-![](IMDbTop250-2.png)
-![](IMDbTop250-3.png)
+## 截屏
 
+### 首页
+![首页](IMDbTop250-1.png)
+
+### 搜索
+![搜索](IMDbTop250-2.png)
+
+### 下载
+![下载](IMDbTop250-3.png)
 
