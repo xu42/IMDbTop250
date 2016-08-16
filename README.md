@@ -22,6 +22,10 @@ git pull
 - GitHub: [https://github.com/xu42/IMDbTop250](https://github.com/xu42/IMDbTop250)
 - Demo: [https://xu42.github.io/IMDbTop250/](https://xu42.github.io/IMDbTop250/)
 
+![](assets/img/IMDbTop250-1.png)
+![](assets/img/IMDbTop250-2.png)
+![](assets/img/IMDbTop250-3.png)
+=======
 ## 截屏
 
 ### 首页
