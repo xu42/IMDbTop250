@@ -37,7 +37,7 @@ new Vue({
     methods: {
         getImdbList: function () {
             var self = this;
-            self.$http.get('imdbList.json').then(function (response) {
+            self.$http.get('assets/js/imdbList.json').then(function (response) {
                 self.imdbList = response.data;
             }, function (response) {
                 self.imdbList = null;
@@ -46,7 +46,7 @@ new Vue({
 
         getTorrentList: function () {
             var self = this;
-            self.$http.get('torrentList.json').then(function (response) {
+            self.$http.get('assets/js/torrentList.json').then(function (response) {
                 self.torrentList = response.data;
             }, function (response) {
                 self.imdbList = null;

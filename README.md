@@ -21,8 +21,8 @@ git pull
 ## 其它
 - Github [https://github.com/xu42/IMDbTop250](https://github.com/xu42/IMDbTop250)
 
-![](IMDbTop250-1.png)
-![](IMDbTop250-2.png)
-![](IMDbTop250-3.png)
+![](assets/img/IMDbTop250-1.png)
+![](assets/img/IMDbTop250-2.png)
+![](assets/img/IMDbTop250-3.png)
 
 
