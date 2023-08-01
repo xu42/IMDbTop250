@@ -56,7 +56,7 @@
                 </div>
                 <div class="modal-body">
                     <div v-for="torrent in torrentLiteList">
-                        <form action="http://www.bttiantang.com/download.php" method="post">
+                        <form action="https://www.bttiantang.com/download.php" method="post">
                             <input type="hidden" value="download" name="action">
                             <input type="hidden" :value="torrentBtid" name="id">
                             <input type="hidden" :value="torrent.uhash" name="uhash">
